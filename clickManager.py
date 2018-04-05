@@ -1,5 +1,7 @@
-import TicTacToe.common as common
-
+try:
+    import TicTacToe.common as common
+except FileNotFoundError:
+    import common
 
 class ClickManager():
     def __init__(self, field, validator):
@@ -13,12 +15,25 @@ class ClickManager():
                 square = self.field.grid[y][x]
                 if square.click_inside(event.x, event.y):  # player clicked this square
                     if square.status is None:  # place is empty
-                        if common.PLAYER_TURN:
-                            self.field.draw_circle(y, x)
-                        else:
-                            self.field.draw_cross(y, x)
-                        self.validator.end_validator(x, y, common.PLAYER_TURN)
-                        self.switch_player()
+                        self.handle_drawing(x, y)
+                        if not self.switch_turns(x, y):
+                            break
+
+    def switch_turns(self, x, y):
+        restart = self.validator.end_validator(x, y, common.PLAYER_TURN)
+        self.switch_player()
+        if restart:
+            return False
+        return True
+
+    def handle_drawing(self, x, y):
+        if common.PLAYER_TURN:
+            self.field.draw_info_cross()
+            self.field.draw_circle(y, x)
+        else:
+            self.field.draw_info_circle()
+            self.field.draw_cross(y, x)
+        common.MOVE_COUNTER += 1
 
     def switch_player(self):
         if common.PLAYER_TURN:
