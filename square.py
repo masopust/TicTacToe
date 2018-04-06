@@ -1,5 +1,7 @@
-import TicTacToe.common as common
-
+try:
+    import TicTacToe.common as common
+except ModuleNotFoundError:
+    import common
 class Square:
     def __init__(self, x, y, padding):
         self.leftX = x
