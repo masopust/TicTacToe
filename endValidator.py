@@ -63,3 +63,4 @@ class EndValidator:
             sys.exit(0)
         else:
             self.field.reset()
+            return True

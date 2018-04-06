@@ -1,35 +1,41 @@
 try:
-    from TicTacToe import endValidator
-    from TicTacToe import common
+    import TicTacToe.field as field
+    import TicTacToe.common as common
 except FileNotFoundError:
-    import endValidator
+    import field
     import common
 
-class Bot():
-    def __init__(self, field):
+from random import randint
+
+class Bot:
+    def __init__(self, field, validator):
         self.field = field
-        self.grid = self.field.grid
-        self.endValidator = endValidator.EndValidator(self.field)
+        self.validator = validator
 
-    def get_empty_squares(self):
-        list = []
-        for x in range(common.NUMBER_OF_COLUMNS):
-            for y in range(common.NUMBER_OF_COLUMNS):
-                if self.grid[x][y].status is None:
-                    list.append(self.grid[x][y])
-        return list
+    def bot_on(self):
+        return int(self.field.var.get()) == 1  # it means that the mode is single player
 
-    def check_end(self, x, y, lastPlayer):
-        return self.endValidator.win(x, y, lastPlayer)
+    def get_empty_spots(self):
+        grid = self.field.grid
+        fields = []
+        for y in range(len(grid)):
+            for x in range(len(grid[y])):
+                if grid[y][x].status is None:
+                    fields.append((x, y))
+        return fields
 
-    def miniMax(self):
-        empty = self.get_empty_squares()
-        for x in range(common.NUMBER_OF_COLUMNS):
-            resultOne = self.check_end(x, common.NUMBER_OF_COLUMNS - x - 1, True)
-            resultTwo = self.check_end(x, common.NUMBER_OF_COLUMNS - x - 1, False)
-            if resultOne:
-                return -1  # human win
-            if resultTwo:
-                return 1
-            if len(empty) == common.NUMBER_OF_COLUMNS ** 2:
-                return 0
+    def play(self):
+        empty = self.get_empty_spots()
+        if len(empty) == 0:
+            if self.validator.contunioation("Draw!\n"):
+                self.play()
+                return
+        num = randint(0, len(empty) - 1)
+        x = empty[num][0]
+        y = empty[num][1]
+        if not common.PLAYER_TURN:
+            self.field.draw_info_circle()
+            self.field.draw_cross(y, x)
+        else:
+            self.field.draw_info_cross()
+            self.field.draw_circle(y, x)

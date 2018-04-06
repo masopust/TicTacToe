@@ -4,6 +4,7 @@ try:
 except ModuleNotFoundError:
     import common
     import square
+from random import randint
 
 
 class Field:
@@ -41,9 +42,9 @@ class Field:
 
     def initialize_radioBox(self):
         # one player is disabled for now
-        c1 = common.tkinter.Radiobutton(self.frame, text="One Player", variable=self.var, value=1, state=common.tkinter.DISABLED)
+        c1 = common.tkinter.Radiobutton(self.frame, text="One Player", variable=self.var, value=1, command=self.reset)
         c1.pack()
-        c2 = common.tkinter.Radiobutton(self.frame, text="Two Players", variable=self.var, value=2)
+        c2 = common.tkinter.Radiobutton(self.frame, text="Two Players", variable=self.var, value=2, command=self.reset)
         c2.select()
         c2.pack()
 

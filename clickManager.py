@@ -1,12 +1,16 @@
 try:
     import TicTacToe.common as common
+    import TicTacToe.bot as bot
 except ModuleNotFoundError:
     import common
+    import bot
+
 
 class ClickManager():
     def __init__(self, field, validator):
         self.field = field
         self.validator = validator
+        self.bot = bot.Bot(self.field, self.validator)
         field.canvas.bind("<Button-1>", self.click)  # right click
 
     def click(self, event):
@@ -33,6 +37,8 @@ class ClickManager():
         else:
             self.field.draw_info_circle()
             self.field.draw_cross(y, x)
+        if self.bot.bot_on() and self.switch_turns(x, y):
+            self.bot.play()
         common.MOVE_COUNTER += 1
 
     def switch_player(self):
