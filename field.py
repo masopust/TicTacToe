@@ -1,7 +1,7 @@
 try:
     import TicTacToe.common as common
     import TicTacToe.square as square
-except FileNotFoundError:
+except ModuleNotFoundError:
     import common
     import square
 
@@ -49,8 +49,13 @@ class Field:
 
     def reset(self):
         common.MOVE_COUNTER = 0
-        if 2 < int(self.entryText.get()) < 6:
-            common.NUMBER_OF_COLUMNS = int(self.entryText.get())
+        try:
+            new_number_of_columns = int(self.entryText.get())
+        except ValueError:
+            new_number_of_columns = 3
+            self.entryText.set(3)
+        if 2 < new_number_of_columns < 6:
+            common.NUMBER_OF_COLUMNS = new_number_of_columns
         else:
             self.entryText.set(3)
         self.grid = []

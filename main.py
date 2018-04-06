@@ -4,10 +4,10 @@ try:
     import TicTacToe.clickManager as clickManager
     import TicTacToe.endValidator as endValidator
     import TicTacToe.field as playingField
-except FileNotFoundError:
+except ModuleNotFoundError:
     import common
     import square
-    import field
+    import field as playingField
     import clickManager
     import endValidator
 

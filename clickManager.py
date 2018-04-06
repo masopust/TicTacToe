@@ -1,6 +1,6 @@
 try:
     import TicTacToe.common as common
-except FileNotFoundError:
+except ModuleNotFoundError:
     import common
 
 class ClickManager():
