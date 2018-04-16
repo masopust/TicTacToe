@@ -1,11 +1,12 @@
 try:
     import TicTacToe.field as field
-    import TicTacToe.common as common
+    import TicTacToe.Common.commonVariables as common
 except FileNotFoundError:
     import field
-    import common
+    import Common.common
 
 from random import randint
+
 
 class Bot:
     def __init__(self, field, validator):

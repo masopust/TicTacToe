@@ -1,10 +1,11 @@
 try:
-    import TicTacToe.common as common
+    import TicTacToe.Common.commonVariables as common
+    import TicTacToe.Common.commonFunctions as commonFunctions
     import TicTacToe.square as square
 except ModuleNotFoundError:
-    import common
+    import Common.common
     import square
-from random import randint
+    import Common.commonFunctions
 
 
 class Field:
@@ -50,9 +51,9 @@ class Field:
 
     def reset(self):
         common.MOVE_COUNTER = 0
-        try:
+        if commonFunctions.validate_numbers(self.entryText.get()):
             new_number_of_columns = int(self.entryText.get())
-        except ValueError:
+        else:
             new_number_of_columns = 3
             self.entryText.set(3)
         if 2 < new_number_of_columns < 6:
@@ -105,13 +106,13 @@ class Field:
     def draw_info_circle(self):
         self.clear_info()
         self.whoseTurnCanvas.create_oval(100, 30, 200, 130,
-                                fill=common.INFO_BACKGROUND, outline=common.CIRCLE_COLOR, width=common.LINE_WIDTH)
+                                         fill=common.INFO_BACKGROUND, outline=common.CIRCLE_COLOR, width=common.LINE_WIDTH)
         self.whoseTurnCanvas.pack(fill=common.both, expand=1)
 
     def draw_info_cross(self):
         self.clear_info()
         self.whoseTurnCanvas.create_line(100, 30, 200, 130,
-                                fill=common.CROSS_COLOR, width=common.LINE_WIDTH)
+                                         fill=common.CROSS_COLOR, width=common.LINE_WIDTH)
         self.whoseTurnCanvas.create_line(100, 130, 200, 30,
-                                fill=common.CROSS_COLOR, width=common.LINE_WIDTH)
+                                         fill=common.CROSS_COLOR, width=common.LINE_WIDTH)
         self.whoseTurnCanvas.pack(fill=common.both, expand=1)

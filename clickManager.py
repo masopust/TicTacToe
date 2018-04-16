@@ -1,8 +1,8 @@
 try:
-    import TicTacToe.common as common
+    import TicTacToe.Common.commonVariables as common
     import TicTacToe.bot as bot
 except ModuleNotFoundError:
-    import common
+    import Common.common
     import bot
 
 
