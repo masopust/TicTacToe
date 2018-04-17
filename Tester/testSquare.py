@@ -1,6 +1,9 @@
 import unittest
 try:
     from TicTacToe import square
+    from TicTacToe import field as playingField
+    from TicTacToe import endValidator
+    from TicTacToe import clickManager
 except ModuleNotFoundError:
     import square
     import field as playingField
