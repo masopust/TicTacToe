@@ -1,11 +1,11 @@
 try:
-    import TicTacToe.common as common
+    import TicTacToe.Common.commonVariables as common
     import TicTacToe.square as square
     import TicTacToe.clickManager as clickManager
     import TicTacToe.endValidator as endValidator
     import TicTacToe.field as playingField
 except ModuleNotFoundError:
-    import common
+    import Common.commonVariables as common
     import square
     import field as playingField
     import clickManager

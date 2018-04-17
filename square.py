@@ -1,9 +1,15 @@
 try:
-    import TicTacToe.common as common
+    import TicTacToe.Common.commonVariables as common
+    import TicTacToe.Common.commonFunctions as commonFunctions
 except ModuleNotFoundError:
-    import common
+    import Common.commonVariables as common
+    import Common.commonFunctions
+
+
 class Square:
     def __init__(self, x, y, padding):
+        if not commonFunctions.validate_numbers([x, y, padding]):
+            raise ValueError
         self.leftX = x
         self.rightX = x + padding
         self.topY = y

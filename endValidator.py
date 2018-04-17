@@ -1,7 +1,7 @@
 try:
-    import TicTacToe.common as common
+    import TicTacToe.Common.commonVariables as common
 except ModuleNotFoundError:
-    import common
+    import Common.commonVariables as common
 import tkinter.messagebox
 import sys
 
@@ -63,3 +63,4 @@ class EndValidator:
             sys.exit(0)
         else:
             self.field.reset()
+            return True
