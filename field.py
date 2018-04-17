@@ -3,7 +3,7 @@ try:
     import TicTacToe.Common.commonFunctions as commonFunctions
     import TicTacToe.square as square
 except ModuleNotFoundError:
-    import Common.common
+    import Common.commonVariables as common
     import square
     import Common.commonFunctions
 

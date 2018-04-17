@@ -2,7 +2,7 @@ try:
     import TicTacToe.Common.commonVariables as common
     import TicTacToe.Common.commonFunctions as commonFunctions
 except ModuleNotFoundError:
-    import Common.common
+    import Common.commonVariables as common
     import Common.commonFunctions
 
 

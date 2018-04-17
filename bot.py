@@ -3,7 +3,7 @@ try:
     import TicTacToe.Common.commonVariables as common
 except FileNotFoundError:
     import field
-    import Common.common
+    import Common.commonVariables as common
 
 from random import randint
 

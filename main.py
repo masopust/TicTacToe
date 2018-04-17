@@ -5,7 +5,7 @@ try:
     import TicTacToe.endValidator as endValidator
     import TicTacToe.field as playingField
 except ModuleNotFoundError:
-    import Common.common
+    import Common.commonVariables as common
     import square
     import field as playingField
     import clickManager

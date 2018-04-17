@@ -24,3 +24,7 @@ canvas = tkinter.Canvas(bg=BACKGROUND_COLOR)
 both = tkinter.BOTH
 frame = tkinter.Frame(tk, width=INFO_SIZE, height=FIELD_SIZE)
 tkinter = tkinter
+
+SERVER_NAME = "localhost"
+PORT_NUMBER = 10000
+HEADER_LENGTH = 2  # number of bytes

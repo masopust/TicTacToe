@@ -2,7 +2,7 @@ try:
     import TicTacToe.Common.commonVariables as common
     import TicTacToe.bot as bot
 except ModuleNotFoundError:
-    import Common.common
+    import Common.commonVariables as common
     import bot
 
 

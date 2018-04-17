@@ -1,7 +1,7 @@
 try:
     import TicTacToe.Common.commonVariables as common
 except ModuleNotFoundError:
-    import Common.common
+    import Common.commonVariables as common
 import tkinter.messagebox
 import sys
 
